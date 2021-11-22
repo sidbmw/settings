@@ -7,9 +7,6 @@ cd ~/.settings
 output "=============== Setting up Soft Links ================="
 ln -s ~/.settings/vimrc ~/.vimrc
 echo "\"Add your custom vim settings to this file" > ~/.myvimrc
-echo "#Add your custom zsh settings to this file" > ~/.myzshrc
-mv ~/.zshrc ~/.zshrc.orig.ohmyzsh
-ln -s ~/.settings/zshrc ~/.zshrc
 
 output "=============== Setting up cscope maps ====================="
 if [ ! -d ~/.vim ]; then
