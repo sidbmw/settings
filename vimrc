@@ -49,8 +49,7 @@ set tags=./tags; "locate tags file for ctags
 
 "------------------------------  MACROS ----------------------------------
 "Remove whitespaces at the end of the line
-let @a=':%s/\s\+$//
-' "pressing @a in a file will remove all spaces at the end of a line (typing ctrl + v followed by enter gives ^M)
+let @a=':%s/\s\+$//' "pressing @a in a file will remove all spaces at the end of a line (typing ctrl + v followed by enter gives ^M)
 
 "------------------------- LEADER KEY SHORTCUTS --------------------------
 let mapleader = "\<Space>"
