@@ -82,9 +82,6 @@ output "=============== Cloning Siddharth's repo ================="
 git clone https://github.com/sidbmw/settings.git ~/.settings
 cd ~/.settings
 
-#switch to the coop branch
-git checkout coop
-
 #install zsh if not installed
 if [ -z "${zsh_prog}" ]; then
 	output "=============== Installing ZSH ================="
