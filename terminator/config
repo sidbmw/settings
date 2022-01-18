@@ -1,0 +1,45 @@
+[global_config]
+  inactive_color_offset = 0.9259259259259259
+[keybindings]
+  copy = <Primary><Shift>c
+  paste = <Primary><Shift>v
+  page_up = Page_Up
+  page_down = Page_Down
+[profiles]
+  [[default]]
+    urgent_bell = True
+    background_color = "#002b36"
+    background_darkness = 0.89
+    background_type = transparent
+    cursor_shape = ibeam
+    cursor_color = "#ef2929"
+    cursor_color_fg = False
+    font = MesloLGS NF 10
+    foreground_color = "#2bf720"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    palette = "#073642:#dc322f:#ff3d3d:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#ff3d3d:#cb4b16:#586e75:#839496:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    use_custom_command = True
+    custom_command = /usr/bin/zsh
+    use_system_font = False
+  [[terminator_default]]
+    background_darkness = 0.75
+    cursor_color = "#00ff00"
+    font = Meslo LG S DZ for Powerline 12
+    foreground_color = "#00ff00"
+    show_titlebar = False
+    scrollback_infinite = True
+    use_custom_command = True
+    custom_command = /usr/bin/zsh
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+      profile = default
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
