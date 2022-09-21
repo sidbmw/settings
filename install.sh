@@ -1,20 +1,15 @@
 #!/bin/bash
 
 #check what distro we are on
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    OS=$ID
-else
-    echo "This distro is too old. Exiting..."
-    exit
-fi
 
-#set package manager based on OS
-if [ "$OS" = "arch" ]; then
-    PKGMGR="pacman -S --noconfirm"
-else
-    PKGMGR="apt install -y"
-fi
+#if [ "$OS" = "arch" ]; then
+#    PKGMGR="sudo pacman -S --noconfirm"
+#else
+#    PKGMGR="sudo apt install -y"
+#fi
+
+PKGMGR="brew install"
+
 
 pwd=`pwd`
 git_prog=`command -v git`
@@ -51,31 +46,25 @@ output()
 
 if [ -z "${curl_prog}" ]; then
     output "============== Installing Curl =========================="
-	sudo $PKGMGR curl
+	$PKGMGR curl
 fi
 
 if [ -z "${git_prog}" ]; then
     output "============== Installing Git =========================="
-	sudo $PKGMGR git
+	$PKGMGR git
     # show git date with ISO standard and local time
     git config --global log.date iso-local
 fi
 
 output "============== Installing VIM =========================="
-sudo $PKGMGR vim
+$PKGMGR vim
 
 output "============== Installing Ag =========================="
 if [ "$OS" = "arch" ]; then
-    sudo $PKGMGR the_silver_searcher
+    $PKGMGR the_silver_searcher
 else
-    sudo $PKGMGR silversearcher-ag
+    $PKGMGR silversearcher-ag
 fi
-
-output "============== Installing ACPI utility =========================="
-sudo $PKGMGR acpi
-
-output "============== Installing rsync utility =========================="
-sudo $PKGMGR rsync 
 
 #clone my repo
 output "=============== Cloning Siddharth's repo ================="
@@ -85,7 +74,7 @@ cd ~/.settings
 #install zsh if not installed
 if [ -z "${zsh_prog}" ]; then
 	output "=============== Installing ZSH ================="
-	sudo $PKGMGR zsh
+	$PKGMGR zsh
 fi
 
 #Install Oh my Zsh
@@ -139,7 +128,7 @@ cd -
 
 output "=============== Installing vim-gtk to get global clipboard support ==============="
 if [ "$OS" = "ubuntu" ]; then
-    sudo $PKGMGR vim-gtk
+    $PKGMGR vim-gtk
 fi
 
 output "=============== Setup Go directories ==============="
@@ -162,24 +151,6 @@ cd fonts
 
 wget -P ${HOME}/.local/share/fonts https://github.com/romkatv/dotfiles-public/raw/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Regular.ttf
 fc-cache -f ${Home}/.local/share/fonts
-
-output "=============== Setting up gnome-terminal ==============="
-# uncheck use system font in gnome-terminal
-gconftool-2 --set /apps/gnome-terminal/profiles/Default/use_system_font --type=boolean false
-# set gnome-terminal to use powerline font
-gconftool-2 --set /apps/gnome-terminal/profiles/Default/font --type string "MesloLGS NF Regular 12"
-
-# find Terminal UUID to settings can be edited
-UUID=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')
-
-# enable custom command
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${UUID}/ use-custom-command true
-
-# specify zsh as the custom command to run
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${UUID}/ custom-command /usr/bin/zsh
-
-# uncheck use system theme colour gnome-terminal setting
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${UUID}/ use-theme-colors false
 
 
 output "=============== Setting up Terminator ==============="
