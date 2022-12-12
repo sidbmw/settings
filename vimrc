@@ -118,6 +118,8 @@ else
         "Make Org files look better
         Plug 'jceb/vim-orgmode'
 
+        Plug 'vimsence/vimsence'
+
 	call plug#end()
 endif
 
