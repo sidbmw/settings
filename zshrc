@@ -351,4 +351,3 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH=/usr/local/bin:$PATH
-cd ~/work/qnx710 && source qnxsdp-env.sh && cd ~
