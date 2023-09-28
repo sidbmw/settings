@@ -153,8 +153,8 @@ wget -P ${HOME}/.local/share/fonts https://github.com/romkatv/dotfiles-public/ra
 fc-cache -f ${Home}/.local/share/fonts
 
 
-output "=============== Setting up Terminator ==============="
-# ~/.settings/terminator/terminator.sh
+output "=============== Install iterm2 ==============="
+brew install --cask iterm2
 
 output "=============== Install custom zsh theme ==============="
 git clone https://github.com/denysdovhan/spaceship-prompt.git "${HOME}/.oh-my-zsh/custom/themes/spaceship-prompt"
